@@ -1,0 +1,21 @@
+Free AI Providers Expanded — v3 manifest
+Research update: 23 November 2026
+
+00-README.md	5367 bytes	sha256=25b262146d31f019e3c2d8cad9a7ec7b4488a5ee4b3dd82b38328c588da14f16
+01-LLM-APIs.md	79006 bytes	sha256=c2791cd51464bfc0f5ac29307b7638c1da2cccb887ecae29016304bb2ed84796
+02-LLM-Web-UI.md	73343 bytes	sha256=fd2942ecae2cf471b528629eed29bea7ddec891283b17c14873ca1b6e69d433d
+03-Image-Generation-APIs.md	140116 bytes	sha256=4b9bcc6a19b32ff1aaf58855a866202c9fc032c61d4c8b1236340f10dd06158d
+04-Image-Generation-Web-UI.md	48012 bytes	sha256=b075f6cf9bc670b3f33ca53f9b212015b5ad83a5550fbfab3ba8ecb8a0016726
+05-Video-Generation-APIs.md	45360 bytes	sha256=c89525a6da27445e68a06c30120e9dd6f1d8f9b96823f516d928ce5735ee0349
+06-Video-Generation-Web-UI.md	51202 bytes	sha256=07c16f166c4123b8617ddad109555976955b4caaea117398cf4216bf02ab4e49
+07-Music-Generation-APIs.md	38567 bytes	sha256=4a97a3161a9aacddd38ccaab6c13d4b2792a071e6270649c38562e1f3acfcfbb
+08-Music-Generation-Web-UI.md	21185 bytes	sha256=749312b9322c844f145f80d9bd1099df31fb95d9f29bf42b3c438ec31c3915da
+09-TTS-APIs.md	41133 bytes	sha256=bf7364051f490b31fa306348a1fbd346eaf4c78cca9d50055ca385ca6fda89c5
+10-TTS-Web-UI.md	2335 bytes	sha256=99eb43c1db5e1dafafd71a1da12b76028ad5405bea45ed6e88e84629c92cb35f
+11-STT-APIs.md	35715 bytes	sha256=fac26e11680f613f68b0eeb6ec36407abc0d882caac0dbc224d104755e79318f
+12-STT-Web-UI.md	2327 bytes	sha256=4de8ab054c03b334ede6e46b5d0626605cbcc5a25d2b436adc727aec89535c41
+13-3D-Generation-APIs.md	26807 bytes	sha256=c89e1bb526f68ec9bf6ca1191b50deba1c61932930e543943b5da4ea392cdb6b
+14-3D-Generation-Web-UI.md	7611 bytes	sha256=43b9b3cceba3f98561206588363d8f1215aacdb2939ce6ec5f734199d29e9ce1
+15-3D-Local-Models-and-Asset-Libraries.md	19466 bytes	sha256=fdeb7e6897d7a2202c372de5b8abe796cba1f30f4e0a6b9dc4c69a580b72d1c1
+16-Registration-Usage-and-Integration-Guide.md	6097 bytes	sha256=6be163900eefb9e13ab5c5e2e044961da84dd2b0064e9fe91075f4e16b2f13fb
+17-Comprehensive-Audit-and-Research-Updates.md	10435 bytes	sha256=c955424573e230e461f1a344f5f07969062ed7150258eab84bad77c482dd59f5
