@@ -1,21 +1,3 @@
-# AI Video Generation — Hosted APIs
-
-> Hosted video-generation API research only. Browser generators are in `06-Video-Generation-Web-UI.md`.
-
-## How to use this file
-
-1. Open the provider's **official API/docs link** in its entry; do not start from an unofficial tutorial if official docs exist.
-2. If the entry is marked **keyless/anonymous**, use only the documented public route. Do not add cookies, browser session tokens or guessed placeholder keys.
-3. If an account is required, register on the provider's official site, verify the account only through its normal supported process, open its developer dashboard, and create an API key if the docs require one. Some providers require project creation or billing activation; the entry must say so.
-4. Copy the exact endpoint, model ID, request fields and output format from the linked docs. Do not infer an endpoint from a model-list page.
-5. Store keys in environment variables or a secret manager. Never commit keys into source code, Markdown, public repositories or client-side apps.
-6. Send one small test request, inspect the actual generated output, then test streaming/polling if supported. A successful `/models` response is not a successful generation test.
-7. Check remaining quota, reset period, shared-credit pool, card/billing requirement, data retention, output license and overage behavior before production use.
-
-**Important:** this catalogue records documented/reported offers. Unless an entry explicitly says `GENERATION_OK`, the research did not independently run a live generation request. API schemas, registration flows and free quotas can change; follow the current official docs.
-
-## Research inventory (preserved from the source catalogue)
-
 # Video-generation API research — focused pass 1 (23 November 2026)
 
 This is the first dedicated video pass. It follows the same three-layer scheme used elsewhere in this directory. Only real programmatic video-generation endpoints are considered. Browser-only video generators, free playgrounds, model directories, self-hosted weights and general-purpose video editing/transcoding quotas are not counted as free video-generation APIs.
@@ -24,7 +6,7 @@ This is the first dedicated video pass. It follows the same three-layer scheme u
 
 ## Layer 1 — keyless / anonymous video-generation APIs
 
-**No new provider is confirmed in strict Layer 1.** The strict definition requires an actual video-generation request to succeed without an account, API key, placeholder key, cookie, browser session or delegated login. None of the reviewed video candidates met that standard with sufficiently reliable evidence.
+**First-pass snapshot (superseded by the Layer 1 deep-search sections below):** at this stage, no strict-keyless commercial video API had been confirmed. The later investigation found public Hugging Face Gradio/ZeroGPU routes that qualify as experimental anonymous API endpoints. They are not stable commercial vendor APIs.
 
 - **Magic Hour web generator is not a keyless API.** Its FAQ advertises three free web generations per day, shared by users on the same network, but that is a browser allowance, not evidence of an anonymous developer endpoint. Do not list it in Layer 1. API access is separately documented and its free API credit amount was not established in the reviewed official material. Sources: https://magichour.ai/faq ; https://docs.magichour.ai/
 - **Google Flow / Google Vids:** browser/app credits or free clip allowances do not transfer to Gemini/Veo API inference. The Gemini API pricing table must be checked per video model; the reviewed 2026 evidence lists video generation as unavailable in the API free tier. Sources: https://ai.google.dev/gemini-api/docs/pricing ; https://support.google.com/flow/
@@ -235,12 +217,31 @@ No other major commercial video API was confirmed in this pass to provide a stab
 - Layer 3: Magic Hour signup credits and Replicate's unpublished model-specific test runs are finite trials.
 - The existence of a free web app, model weights, or a free plan must never be used as proof of free API access.
 
-# Research expansion — deAPI video API (23 November 2026)
 
-## Layer 3 — shared signup credit, video-capable route
+### Layer 1 addendum — further public video Spaces found (23 November 2026)
 
-| Provider | Free offer | API capability | Classification and caveats | Official source |
-|---|---|---|---|---|
-| **deAPI — MiniMax H3 Turbo INT8** | Uses the same **$5 one-time deAPI account credit** recorded in the image/LLM sections. Provider page states up to **3 MiniMax H3 clips/day** on a free account; an example 768×768, 5-second clip costs about **$0.106**. | REST text-to-video and image-to-video; asynchronous request and MP4 result. | `LAYER_3_SHARED_MULTIMODAL_CREDIT / MODEL_SPECIFIC_DAILY_CAP`. Do not multiply the $5 balance by modality or count three daily clips as free of charge regardless of balance. The three-clip limit is an upper request cap; the shared balance still controls whether the job can be paid. Verify current price, duration, resolution and audio settings before use. | https://deapi.ai/lp/en/minimax-h3 ; https://deapi.ai/ |
+This addendum adds further public endpoints to the existing Hugging Face/ZeroGPU inventory. These are **Spaces/endpoints, not separate commercial API vendors**. Their existence and public deployment are documented, but a fresh end-to-end anonymous generation was not run for every entry. Keep them as candidates until a no-token generation is individually verified.
 
-**Accounting correction:** deAPI's $5 is a shared platform signup balance, not a separate image/video/music/LLM trial for each section. This is a cross-reference, not a second $5 grant.
+| Public Space / endpoint | Video capability | Layer 1 status | Evidence and caveats |
+|---|---|---|---|
+| `Lightricks/LTX-2.5` | Official LTX-2.5 distilled ZeroGPU demo; text-to-video and image-to-video, with synchronized audio in the model workflow. | `PUBLIC_ZERO_GPU_CANDIDATE`; public Space is running, but no fresh no-token generation was performed in this pass. | Official Space is marked “Running on Zero”; its app exposes a Gradio interface. Public Gradio Spaces can expose callable API endpoints. Verify the live “Use via API” schema and test without an Authorization header before marking `ANONYMOUS_VERIFIED`. Source: https://huggingface.co/spaces/Lightricks/LTX-2.5 |
+| `X-HighVoltage-X/LTX-2.5` | Community deployment of the LTX-2.5 distilled video workflow. | `PUBLIC_ZERO_GPU_CANDIDATE / COMMUNITY_DEPLOYMENT`; no independent no-token output captured. | Public Space is marked “Running on Zero” and contains the LTX-2.5 demo app. It is another deployment of the same model/workflow, not a new provider or a new model quota. Source: https://huggingface.co/spaces/X-HighVoltage-X/LTX-2.5 |
+| `JCisHERE/wan2-2-i2v-v3` | Wan 2.2 14B fast-preview image-to-video. | `PUBLIC_ZERO_GPU_CANDIDATE / I2V`; not independently tested without a token. | Public Space directory lists it as “Running on Zero”; its README identifies the app as Wan2.2 14B Fast Preview. The README is sparse, so inspect the live API schema and app code before integration. Source: https://huggingface.co/spaces/JCisHERE/wan2-2-i2v-v3 |
+| `DeepRat/LTX-Video-ZeroGPU-Optimized` | LTX-Video 0.9.8 13B distilled; text-to-video and image-to-video, with advertised 2–10 second presets. | `PUBLIC_ZERO_GPU_CANDIDATE`; not independently tested without a token. | Public Space is marked “Running on Zero”; README documents the generation modes and ZeroGPU configuration. Treat the “guarantee inference” wording as the author's description, not an availability guarantee. Source: https://huggingface.co/spaces/DeepRat/LTX-Video-ZeroGPU-Optimized |
+| `akhaliq/LTX-2.5-workflow` | LTX-2.5 workflow running directly on ZeroGPU as a function/operator. | `PUBLIC_ZERO_GPU / WORKFLOW_CANDIDATE`; confirm callable public endpoint and anonymous access before integration. | Public Space repository contains `run.py` and a minimal Gradio app, and its README describes direct ZeroGPU execution. It may expose a different API surface from ordinary Gradio `predict` endpoints. Source: https://huggingface.co/spaces/akhaliq/LTX-2.5-workflow |
+
+#### Avoid duplicate counting
+
+- `arpitkgoyal/ltx-2.5-demo` is a static client page that calls the official Lightricks LTX-2.5 Space; it is a wrapper/client, not another inference provider or GPU quota. Source: https://huggingface.co/spaces/arpitkgoyal/ltx-2.5-demo
+- `Desident/LTX2.3-Studio` is a project/repository reference whose README points to a separate live demo; do not count the repository and the live Space as two providers. Source: https://huggingface.co/spaces/Desident/LTX2.3-Studio
+- Multiple Spaces running LTX or Wan share the same Hugging Face anonymous ZeroGPU platform allowance. Adding more Spaces does not multiply the user's two-minute unauthenticated daily GPU allowance.
+- The Hugging Face Inference Providers text-to-video API is a separate route and its official example requires `HF_TOKEN`; do not classify that hosted-provider API as keyless. Source: https://huggingface.co/docs/inference-providers/tasks/text-to-video
+
+#### Updated Layer 1 inventory interpretation
+
+The inventory now contains the original anonymous Wan 2.2/SVD evidence, Wan-Animate-2, Lightricks LTX demos, and additional Wan/LTX public Space candidates. Keep a distinction between:
+1. `ANONYMOUS_GENERATION_REPORTED` — an actual no-token generation was reported by an independent tester;
+2. `PUBLIC_ZERO_GPU_CANDIDATE` — a public running Space and API-capable Gradio app were found, but a fresh no-token video completion was not verified;
+3. `PUBLIC_WRAPPER_ONLY` — a client page or repository that calls another Space, not a separate inference endpoint.
+
+Do not label every candidate `GENERATION_OK`. No new independent commercial video API vendor or guaranteed free clip quota was established by this addendum.
